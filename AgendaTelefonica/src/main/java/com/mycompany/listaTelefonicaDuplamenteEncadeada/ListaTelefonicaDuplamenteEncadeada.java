@@ -19,6 +19,29 @@ public class ListaTelefonicaDuplamenteEncadeada {
     }
     
     /**
+     *
+     * @return 
+     */
+    public int TamanhoLista(){
+        int contador = 0;
+        
+        // Se a lista está vazia
+        if (this.inicio == null){
+            return contador;
+        }else{
+            
+            NoLista noAtual = this.inicio;
+        
+            while(noAtual.proximoNo != null){
+                contador++;
+                noAtual = noAtual.proximoNo;
+            }
+            
+            return contador + 1;
+        }        
+    }
+    
+    /**
      * 
      * @param dddNumero
      * @param numeroTelefone

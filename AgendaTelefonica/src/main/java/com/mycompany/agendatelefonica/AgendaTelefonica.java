@@ -21,6 +21,6 @@ public class AgendaTelefonica {
         
         //agenda.removerTelefone(71, 223456789);
         
-        agenda.mostrarDados();
+        System.out.println(agenda.TamanhoLista());
     }
 }
