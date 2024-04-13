@@ -13,7 +13,7 @@ public class AgendaTelefonica {
     public static void main(String[] args) {
         ListaTelefonicaDuplamenteEncadeada agenda = new ListaTelefonicaDuplamenteEncadeada();
         
-        agenda.adicionarNovoNumero(996474837, 71);
-        agenda.adicionarNovoNumero(123456789, 71);
+        agenda.adicionarNovoNumero(71, 996474837);
+        agenda.adicionarNovoNumero(71, 123456789);
     }
 }

@@ -19,7 +19,7 @@ public class ListaTelefonicaDuplamenteEncadeada {
     }
     
     // Método para adicionar um novo numero
-    public void adicionarNovoNumero(int numeroTelefone, int dddNumero){
+    public void adicionarNovoNumero(int dddNumero, int numeroTelefone){
         
         // Verifica se a lista já foi iniciada
         if (this.inicio == null){
