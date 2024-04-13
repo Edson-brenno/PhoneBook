@@ -23,25 +23,25 @@ public class ListaTelefonicaDuplamenteEncadeada {
      * @param dddNumero
      * @param numeroTelefone
      */
-    public void adicionarTelefoneNoInicio(int dddNumero, int numeroTelefone){
+    public void adicionarTelefoneNoInicio(String nomeContato,int dddNumero, int numeroTelefone){
         // Varifica se a lista já foi iniciada
         if (this.inicio == null){
-            this.inicio = new NoLista(numeroTelefone, dddNumero);
+            this.inicio = new NoLista(numeroTelefone, dddNumero, nomeContato);
         }
         else{
             NoLista noInicioAtual = this.inicio;
-            this.inicio = new NoLista(numeroTelefone, dddNumero);
+            this.inicio = new NoLista(numeroTelefone, dddNumero, nomeContato);
             this.inicio.proximoNo = noInicioAtual;
             this.inicio.proximoNo.noAnterior = this.inicio;
         }
     }
     
     // Método para adicionar um novo numero
-    public void adicionarTelefone(int dddNumero, int numeroTelefone){
+    public void adicionarTelefone(String nomeContato, int dddNumero, int numeroTelefone){
         
         // Verifica se a lista já foi iniciada
         if (this.inicio == null){
-            this.inicio = new NoLista(numeroTelefone, dddNumero);
+            this.inicio = new NoLista(numeroTelefone, dddNumero, nomeContato);
         }else{
             // No atual
             NoLista noAtual = this.inicio;
@@ -51,7 +51,7 @@ public class ListaTelefonicaDuplamenteEncadeada {
                 noAtual = noAtual.proximoNo;
             }
             // Adiciona novo numero no proximo nó
-            noAtual.proximoNo = new NoLista(numeroTelefone, dddNumero);
+            noAtual.proximoNo = new NoLista(numeroTelefone, dddNumero, nomeContato);
             // Seta no anterior do proximo nó
             noAtual.proximoNo.noAnterior = noAtual;
             
@@ -120,13 +120,11 @@ public class ListaTelefonicaDuplamenteEncadeada {
     public void mostrarDados(){
         NoLista atual = this.inicio;
         
-        System.out.println(atual);
-        
-        System.out.println("DDD: " + atual.dddNumero + "Numero: " + atual.numeroTelefone);
+        System.out.println("Nome: " + atual.nomeContato + " (" + atual.dddNumero + ") " + atual.numeroTelefone);
         
         while(atual.proximoNo != null){
             atual = atual.proximoNo;
-            System.out.println("DDD: " + atual.dddNumero + "Numero: " + atual.numeroTelefone);
+            System.out.println("Nome: " + atual.nomeContato + " (" + atual.dddNumero + ") " + atual.numeroTelefone);
         }
     }
    
