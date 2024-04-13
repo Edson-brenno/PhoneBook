@@ -16,7 +16,10 @@ public class AgendaTelefonica {
         agenda.adicionarNovoNumero(71, 996474837);
         agenda.adicionarNovoNumero(71, 123456789);
         agenda.adicionarNovoNumero(71, 223456789);
+        agenda.adicionarNovoNumero(71, 323456789);
         
-        agenda.removerNumero(71, 123456789);
+        agenda.removerNumero(71, 223456789);
+        
+        agenda.mostrarDados();
     }
 }

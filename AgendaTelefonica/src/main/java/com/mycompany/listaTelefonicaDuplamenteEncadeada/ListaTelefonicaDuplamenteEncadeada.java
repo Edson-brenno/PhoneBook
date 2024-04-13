@@ -50,12 +50,12 @@ public class ListaTelefonicaDuplamenteEncadeada {
      */
     public void removerNumero(int dddNumero, int numeroTelefone) 
             throws Exception{
-        
+        // Se a lista não foi iniciada
         if(this.inicio == null){
             throw new Exception("Lista Vazia");
         }
         else{
-            
+            // Se o numero e o ddd do inicio da lista não for igual ao numero e ddd a remover
             if(this.inicio.dddNumero != dddNumero || 
                     this.inicio.numeroTelefone != numeroTelefone){
                 
@@ -64,19 +64,30 @@ public class ListaTelefonicaDuplamenteEncadeada {
 
                 // equanto o proximo nó for diferente de nulo
                 while(noAtual.proximoNo != null){
+                    
                     noAtual = noAtual.proximoNo;
                     
+                    // para while se achar o numero e ddd desejado
                     if (noAtual.dddNumero == dddNumero && 
                             noAtual.numeroTelefone == numeroTelefone){
                         
                         break;
                     }
                 }
-                // Seta no anterior do proximo nó
-                noAtual.proximoNo.noAnterior = noAtual.noAnterior;
                 
-                // Adiciona novo numero no proximo nó
-                noAtual = noAtual.proximoNo;
+                // Se o numero a ser removido é o ultimo da lista
+                if (noAtual.proximoNo == null){
+                    noAtual = noAtual.noAnterior;
+                    noAtual.proximoNo = null;
+                }else{
+             
+                    // Remove dado desejado da lista
+                    
+                    noAtual.noAnterior.proximoNo = noAtual.proximoNo;
+                    noAtual.proximoNo.noAnterior = noAtual.noAnterior;
+                    noAtual = noAtual.proximoNo;
+                }
+                
                 
             }else{
                 
@@ -85,6 +96,17 @@ public class ListaTelefonicaDuplamenteEncadeada {
                 
             }
             
+        }
+    }
+    
+    public void mostrarDados(){
+        NoLista atual = this.inicio;
+        
+        System.out.println("DDD: " + atual.dddNumero + "Numero: " + atual.numeroTelefone);
+        
+        while(atual.proximoNo != null){
+            atual = atual.proximoNo;
+            System.out.println("DDD: " + atual.dddNumero + "Numero: " + atual.numeroTelefone);
         }
     }
    
