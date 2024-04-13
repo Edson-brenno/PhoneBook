@@ -32,8 +32,10 @@ public class ListaTelefonicaDuplamenteEncadeada {
             while(noAtual.proximoNo != null){
                 noAtual = noAtual.proximoNo;
             }
-            
+            // Adiciona novo numero no proximo nó
             noAtual.proximoNo = new NoLista(numeroTelefone, dddNumero);
+            // Seta no anterior do proximo nó
+            noAtual.proximoNo.noAnterior = noAtual;
             
         }
     }

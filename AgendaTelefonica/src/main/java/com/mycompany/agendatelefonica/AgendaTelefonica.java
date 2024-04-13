@@ -3,7 +3,7 @@
  */
 
 package com.mycompany.agendatelefonica;
-
+import com.mycompany.listaTelefonicaDuplamenteEncadeada.ListaTelefonicaDuplamenteEncadeada;
 /**
  *
  * @author brenno
@@ -11,6 +11,9 @@ package com.mycompany.agendatelefonica;
 public class AgendaTelefonica {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ListaTelefonicaDuplamenteEncadeada agenda = new ListaTelefonicaDuplamenteEncadeada();
+        
+        agenda.adicionarNovoNumero(996474837, 71);
+        agenda.adicionarNovoNumero(123456789, 71);
     }
 }
