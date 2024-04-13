@@ -22,7 +22,7 @@ public class ListaTelefonicaDuplamenteEncadeada {
      *
      * @return 
      */
-    public int TamanhoLista(){
+    public int tamanhoLista(){
         int contador = 0;
         
         // Se a lista está vazia
@@ -59,8 +59,54 @@ public class ListaTelefonicaDuplamenteEncadeada {
         }
     }
     
+    /**
+     *
+     * @param nomeContato
+     * @param dddNumero
+     * @param numeroTelefone
+     */
+    // Adiciona um novo contato no meio da lista
+    public void adicionarTelefoneNoMeio(String nomeContato, int dddNumero, int numeroTelefone){
+        // Se a lista ainda não foi inciada
+        if (this.inicio == null){
+            
+            this.adicionarTelefoneNoInicio(nomeContato, dddNumero, 
+                    numeroTelefone);
+            
+        }
+        // Se a lista possui apenas um contato
+        else if(this.inicio.proximoNo == null){ 
+            this.adicionarTelefoneNoFinal(nomeContato, dddNumero, 
+                    numeroTelefone);
+        }else{
+             // posicao do meio da lista
+            int meioDaLista = (this.tamanhoLista() % 2 == 0) ? 
+                    this.tamanhoLista() / 2: (this.tamanhoLista() - 1) / 2;
+
+            // No atual
+            NoLista noAtual = this.inicio;
+
+            for(int c = 1; c < meioDaLista;c++){
+                noAtual = noAtual.proximoNo;
+            }
+
+            // Estancia no novo
+            NoLista noNovo = new NoLista(numeroTelefone, dddNumero, 
+                    nomeContato);
+            // move o proximo do no atual para o nó novo
+            noNovo.proximoNo = noAtual.proximoNo;
+            // atualiza o no anterior do proximo nó
+            noNovo.proximoNo.noAnterior = noNovo;
+            // nó anterior é igual ao atual
+            noNovo.noAnterior = noAtual;
+
+            noAtual.proximoNo = noNovo;
+        }
+      
+    }
+    
     // Método para adicionar um novo numero
-    public void adicionarTelefone(String nomeContato, int dddNumero, int numeroTelefone){
+    public void adicionarTelefoneNoFinal(String nomeContato, int dddNumero, int numeroTelefone){
         
         // Verifica se a lista já foi iniciada
         if (this.inicio == null){
