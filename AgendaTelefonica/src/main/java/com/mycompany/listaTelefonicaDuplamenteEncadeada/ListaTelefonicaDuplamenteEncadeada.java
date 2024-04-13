@@ -22,6 +22,7 @@ public class ListaTelefonicaDuplamenteEncadeada {
      *
      * @return 
      */
+    // retorna o tamanho da lista
     public int tamanhoLista(){
         int contador = 0;
         
@@ -43,10 +44,13 @@ public class ListaTelefonicaDuplamenteEncadeada {
     
     /**
      * 
+     * @param nomeContato
      * @param dddNumero
      * @param numeroTelefone
      */
-    public void adicionarTelefoneNoInicio(String nomeContato,int dddNumero, int numeroTelefone){
+    // Adiciona novo contato no inicio da lista
+    public void adicionarTelefoneNoInicio(String nomeContato, int dddNumero, 
+            int numeroTelefone){
         // Varifica se a lista já foi iniciada
         if (this.inicio == null){
             this.inicio = new NoLista(numeroTelefone, dddNumero, nomeContato);
@@ -66,7 +70,8 @@ public class ListaTelefonicaDuplamenteEncadeada {
      * @param numeroTelefone
      */
     // Adiciona um novo contato no meio da lista
-    public void adicionarTelefoneNoMeio(String nomeContato, int dddNumero, int numeroTelefone){
+    public void adicionarTelefoneNoMeio(String nomeContato, int dddNumero, 
+            int numeroTelefone){
         // Se a lista ainda não foi inciada
         if (this.inicio == null){
             
@@ -106,7 +111,8 @@ public class ListaTelefonicaDuplamenteEncadeada {
     }
     
     // Método para adicionar um novo numero
-    public void adicionarTelefoneNoFinal(String nomeContato, int dddNumero, int numeroTelefone){
+    public void adicionarTelefoneNoFinal(String nomeContato, int dddNumero, 
+            int numeroTelefone){
         
         // Verifica se a lista já foi iniciada
         if (this.inicio == null){
@@ -189,11 +195,13 @@ public class ListaTelefonicaDuplamenteEncadeada {
     public void mostrarDados(){
         NoLista atual = this.inicio;
         
-        System.out.println("Nome: " + atual.nomeContato + " (" + atual.dddNumero + ") " + atual.numeroTelefone);
+        System.out.println("Nome: " + atual.nomeContato + " (" + atual.dddNumero
+                + ") " + atual.numeroTelefone);
         
         while(atual.proximoNo != null){
             atual = atual.proximoNo;
-            System.out.println("Nome: " + atual.nomeContato + " (" + atual.dddNumero + ") " + atual.numeroTelefone);
+            System.out.println("Nome: " + atual.nomeContato + " (" 
+                    + atual.dddNumero + ") " + atual.numeroTelefone);
         }
     }
    
