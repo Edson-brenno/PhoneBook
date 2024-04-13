@@ -10,10 +10,13 @@ import com.mycompany.listaTelefonicaDuplamenteEncadeada.ListaTelefonicaDuplament
  */
 public class AgendaTelefonica {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         ListaTelefonicaDuplamenteEncadeada agenda = new ListaTelefonicaDuplamenteEncadeada();
         
         agenda.adicionarNovoNumero(71, 996474837);
         agenda.adicionarNovoNumero(71, 123456789);
+        agenda.adicionarNovoNumero(71, 223456789);
+        
+        agenda.removerNumero(71, 123456789);
     }
 }
