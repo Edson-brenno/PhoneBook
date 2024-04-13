@@ -18,8 +18,26 @@ public class ListaTelefonicaDuplamenteEncadeada {
         this.inicio = null;
     }
     
+    /**
+     * 
+     * @param dddNumero
+     * @param numeroTelefone
+     */
+    public void adicionarTelefoneNoInicio(int dddNumero, int numeroTelefone){
+        // Varifica se a lista já foi iniciada
+        if (this.inicio == null){
+            this.inicio = new NoLista(numeroTelefone, dddNumero);
+        }
+        else{
+            NoLista noInicioAtual = this.inicio;
+            this.inicio = new NoLista(numeroTelefone, dddNumero);
+            this.inicio.proximoNo = noInicioAtual;
+            this.inicio.proximoNo.noAnterior = this.inicio;
+        }
+    }
+    
     // Método para adicionar um novo numero
-    public void adicionarNovoNumero(int dddNumero, int numeroTelefone){
+    public void adicionarTelefone(int dddNumero, int numeroTelefone){
         
         // Verifica se a lista já foi iniciada
         if (this.inicio == null){
@@ -44,11 +62,11 @@ public class ListaTelefonicaDuplamenteEncadeada {
 
     /**
      *
-     * @param dddNumero
+     * @param dddNumero 
      * @param numeroTelefone
      * @throws Exception
      */
-    public void removerNumero(int dddNumero, int numeroTelefone) 
+    public void removerTelefone(int dddNumero, int numeroTelefone) 
             throws Exception{
         // Se a lista não foi iniciada
         if(this.inicio == null){
@@ -90,7 +108,7 @@ public class ListaTelefonicaDuplamenteEncadeada {
                 
                 
             }else{
-                
+                // Remove dados desejado se tal estiver no inicio
                 this.inicio = this.inicio.proximoNo;
                 this.inicio.noAnterior = null;
                 
@@ -101,6 +119,8 @@ public class ListaTelefonicaDuplamenteEncadeada {
     
     public void mostrarDados(){
         NoLista atual = this.inicio;
+        
+        System.out.println(atual);
         
         System.out.println("DDD: " + atual.dddNumero + "Numero: " + atual.numeroTelefone);
         
