@@ -17,5 +17,25 @@ public class ListaTelefonicaDuplamenteEncadeada {
     public ListaTelefonicaDuplamenteEncadeada(){
         this.inicio = null;
     }
+    
+    // Método para adicionar um novo numero
+    public void adicionarNovoNumero(int numeroTelefone, int dddNumero){
+        
+        // Verifica se a lista já foi iniciada
+        if (this.inicio == null){
+            this.inicio = new NoLista(numeroTelefone, dddNumero);
+        }else{
+            // No atual
+            NoLista noAtual = this.inicio;
+            
+            // equanto o proximo nó for diferente de nulo
+            while(noAtual.proximoNo != null){
+                noAtual = noAtual.proximoNo;
+            }
+            
+            noAtual.proximoNo = new NoLista(numeroTelefone, dddNumero);
+            
+        }
+    }
    
 }
