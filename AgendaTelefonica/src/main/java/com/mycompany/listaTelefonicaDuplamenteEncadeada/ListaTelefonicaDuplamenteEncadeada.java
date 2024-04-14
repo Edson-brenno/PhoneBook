@@ -126,7 +126,8 @@ public class ListaTelefonicaDuplamenteEncadeada {
                 noAtual = noAtual.proximoNo;
             }
             // Adiciona novo numero no proximo nó
-            noAtual.proximoNo = new NoLista(numeroTelefone, dddNumero, nomeContato);
+            noAtual.proximoNo = new NoLista(numeroTelefone, dddNumero, 
+                    nomeContato);
             // Seta no anterior do proximo nó
             noAtual.proximoNo.noAnterior = noAtual;
             
@@ -189,6 +190,51 @@ public class ListaTelefonicaDuplamenteEncadeada {
                 
             }
             
+        }
+    }
+    
+    /**
+     *
+     * @throws Exception
+     */
+    // Inverte a lista de contatos
+    public void inverterLista() throws Exception{
+        if(this.inicio == null){
+            throw new Exception("A lista esta vazia");
+        }
+        else{
+            NoLista noAtual = this.inicio;
+            NoLista noInvertido, listaInvertida;
+            
+            // while para chegar na ultima posicao
+            while(noAtual.proximoNo != null){
+                noAtual = noAtual.proximoNo;
+            }
+            
+            // lista invertida
+            listaInvertida = new NoLista(noAtual.numeroTelefone, noAtual.dddNumero,
+            noAtual.nomeContato);
+            
+            // nó para inverter a lista
+            noInvertido = listaInvertida;
+            
+            // voltando o nó autal
+            while(noAtual.noAnterior != null){
+                noAtual = noAtual.noAnterior;
+                
+                // atualizando o no invertido
+                while(noInvertido.proximoNo != null){
+                    noInvertido = noInvertido.proximoNo;
+                    
+                }
+                // atribuindo valores ao nó invertido
+                noInvertido.proximoNo = new NoLista(noAtual.numeroTelefone,
+                noAtual.dddNumero,noAtual.nomeContato);
+                noInvertido.proximoNo.noAnterior = noInvertido;
+            }
+            
+            // atualiza inicio pela lista invertida
+            this.inicio = listaInvertida;
         }
     }
     
